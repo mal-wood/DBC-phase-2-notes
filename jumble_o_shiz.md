@@ -5,8 +5,7 @@ everytime an HTTP request is made, those cookies are passed from the browser, to
 back to the browser so that they *persist* throughout a user's experience.
 
 SESSIONS are stored on the server and their ID is passed in a cookie. Sessions are more secure than cookies because the
-data they contain cannot be viewed or edited by the client. They can store much more than cookies and dave bandwidth - since only
-the ID is passed from the client (not all of the bits of info like in a cookie).
+data they contain cannot be viewed or edited by the client. They can store much more than cookies and save bandwidth - since only the ID is passed from the client (not all of the bits of info like in a cookie).
 
 Best example that I found on Stack Overflow to describe this relationship: 
 
