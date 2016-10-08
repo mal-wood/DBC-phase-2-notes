@@ -29,15 +29,10 @@ be lost.**
 
 Include the following code in the USER model: 
 ```
-#reader method to display the password OR create a new password object if it does not yet exist
-
- def password
+def password
    @password ||= Password.new(password_hash)
  end
- 
- # accessor-like method to create a new password with what is passed in from the user 
- # calling the password_hash method on that input to store the hashed password
- 
+
  def password=(new_password)
    @password = Password.create(new_password)
    self.password_hash = @password
