@@ -23,3 +23,32 @@ license for each transaction, you can just say "I'm client 12"
 create a session ID which it will send back to the client in a cookie. When the client sends back the cookie,
 the server can simply look up the session object using the ID. So, if you delete the cookie, the session will
 be lost.**
+
+---
+**SETTING UP USER AUTHENTICATION**
+
+Include the following code in the USER model: 
+```
+#reader method to display the password OR create a new password object if it does not yet exist
+
+ def password
+   @password ||= Password.new(password_hash)
+ end
+ 
+ # accessor-like method to create a new password with what is passed in from the user 
+ # calling the password_hash method on that input to store the hashed password
+ 
+ def password=(new_password)
+   @password = Password.create(new_password)
+   self.password_hash = @password
+ end
+ 
+ def self.authenticate(email, password)
+    user = User.find_by(email: email)
+    if user.password == password
+      true
+    else
+      false
+    end
+  end
+  ```
