@@ -51,5 +51,26 @@ def password
 **WAY TO SET UP A SESSION **
 
 Just need to set the session "current_user_id" equal to the id of the user who has logged in 
+
 `session[:current_user_id] = @user.id`
+```
+get '/inspector' do
+  session.inspect
+end
+
+get '/sessions/new' do 
+	erb :'sessions/new'
+end
+
+post '/sessions' do 
+	email = params[:user][:email]
+	password = params[:user][:password]
+	@user = User.find_by(email: params[:user][:email])
+	if @user && User.authenticate(email, password)
+			# session[:user_id] = @user.id
+			# redirect "/users/#{@user.id}"
+			redirect "/"
+		end
+end
+```
 
