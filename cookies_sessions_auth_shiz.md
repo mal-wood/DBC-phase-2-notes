@@ -38,14 +38,18 @@ def password
    self.password_hash = @password
  end
  
- def self.authenticate(email, password)
-    user = User.find_by(email: email)
-    if user.password == password
-      true
-    else
-      false
-    end
-  end
+  def self.authenticate(email, password)
+     user = User.find_by(email: email)
+     if user.password == password
+       true
+     else
+       false
+     end
+   end
   ```
 
-thing
+**WAY TO SET UP A SESSION **
+
+Just need to set the session "current_user_id" equal to the id of the user who has logged in 
+`session[:current_user_id] = @user.id`
+
